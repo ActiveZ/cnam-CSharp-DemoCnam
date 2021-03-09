@@ -15,14 +15,14 @@ namespace projet3_classes_
         private Client _titulaire;
 
         // constructeur
-        public Compte(string numero = "123", string dateCreation, float solde = 100)
+        public Compte(string numero = "123", string dateCreation = "0/1/2000", float solde = 100)
         {
             _numero = numero;
             _dateCreation = DateTime.Parse (dateCreation);
             _solde = solde;
         }
 
-        public Compte(string numero = "123", DateTime dateCreation, float solde = 100, Client titulaire)
+        public Compte(string numero = "123", DateTime dateCreation = new DateTime(), float solde = 100, Client titulaire = new Client())
         {
             _numero = numero;
             _dateCreation = dateCreation;
@@ -67,7 +67,7 @@ namespace projet3_classes_
         }
 
         
-        public override string ToString() => $"Votre compte numéro " + _numero + " créé le " + _dateCreation + " est créditeur de " + _solde + " euros " + "titulaire: ", titulaire;
+        public override string ToString() => $"Votre compte numéro " + _numero + " créé le " + _dateCreation + " est créditeur de " + _solde + " euros " + "titulaire: " + _titulaire;
 
 
         public void Deconstruct(out string numero, out DateTime dateCreation, out float solde)
@@ -77,7 +77,7 @@ namespace projet3_classes_
             solde = _solde;
         }
 
-        public Client Titulaire()
+        public void Titulaire()
         {
 
         }

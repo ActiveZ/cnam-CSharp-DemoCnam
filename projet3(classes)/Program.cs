@@ -65,6 +65,9 @@ namespace projet3_classes_
 
             Console.WriteLine("----------------------------------");
             Console.WriteLine("Création compte");
+            //Compte monCompte3 = new Compte("888", DateTime.Now, 888, client1);
+            //monCompte3.ToString();
+
         }
     }
 }

@@ -14,6 +14,7 @@ namespace projet3_classes_
         private string Email { get; set; }
         private string Tel { get; set; }
 
+        public Client(){}
 
         public Client(string nom = "", string prenom = "", DateTime dateNaissance = new DateTime() , string email = "", string tel = "")
         {
@@ -32,12 +33,6 @@ namespace projet3_classes_
             if (now < DateNaissance.AddYears(age)) age--;
             return age.ToString();
         }
-
-        public void creerCompte()
-        {
-            Compte monCompte = new Compte();
-        }
-
 
 
         public override string ToString() => "Nom: " + Nom + " - Prénom: " + Prenom + " - Date naissance: " + DateNaissance + " - Age: " + Age() + " - Email: " + Email + " - Tel: " + Tel;

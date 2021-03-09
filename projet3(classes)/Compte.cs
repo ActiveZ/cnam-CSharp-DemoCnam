@@ -10,9 +10,9 @@ namespace projet3_classes_
     {
         // attributs
         private string _numero;
-        // private string _dateCreation;
         private DateTime _dateCreation;
         private float _solde;
+        private Client _titulaire;
 
         // constructeur
         public Compte(string numero = "123", string dateCreation, float solde = 100)
@@ -22,11 +22,12 @@ namespace projet3_classes_
             _solde = solde;
         }
 
-        public Compte(string numero = "123", DateTime dateCreation, float solde = 100)
+        public Compte(string numero = "123", DateTime dateCreation, float solde = 100, Client titulaire)
         {
             _numero = numero;
             _dateCreation = dateCreation;
             _solde = solde;
+            _titulaire = titulaire;
         }
 
         public Compte()
@@ -65,8 +66,8 @@ namespace projet3_classes_
             return false;
         }
 
-
-        public override string ToString() => $"Votre compte numéro " + _numero + " créé le " + _dateCreation + " est créditeur de " + _solde + " euros";
+        
+        public override string ToString() => $"Votre compte numéro " + _numero + " créé le " + _dateCreation + " est créditeur de " + _solde + " euros " + "titulaire: ", titulaire;
 
 
         public void Deconstruct(out string numero, out DateTime dateCreation, out float solde)
@@ -74,6 +75,11 @@ namespace projet3_classes_
             numero = _numero;
             dateCreation = _dateCreation;
             solde = _solde;
+        }
+
+        public Client Titulaire()
+        {
+
         }
     }
 }

@@ -61,9 +61,10 @@ namespace projet3_classes_
             Console.WriteLine("----------------------------------");
             Client client1 = new Client("nom1", "prenom1",new DateTime(1/1/2000) ,"email1", "tel1");
             Console.WriteLine("Client 1: " + client1.ToString());
-            Client client2 = new Client() { Nom = "client2", Prenom = "prenom2" };
-            // Client c3 = new Client();
-            // Console.WriteLine("Client 2: " + client2);
+
+
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("Création compte");
         }
     }
 }

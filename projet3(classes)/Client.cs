@@ -8,11 +8,12 @@ namespace projet3_classes_
 {
     class Client // propriétes simplifiées
     {
-        public string Nom { get; set; }
-        public string Prenom { get; set; }
-        public DateTime DateNaissance;
-        public string Email { get; set; }
-        public string Tel { get; set; }
+        private string Nom { get; set; }
+        private string Prenom { get; set; }
+        private DateTime DateNaissance;
+        private string Email { get; set; }
+        private string Tel { get; set; }
+
 
         public Client(string nom = "", string prenom = "", DateTime dateNaissance = new DateTime() , string email = "", string tel = "")
         {
@@ -31,6 +32,13 @@ namespace projet3_classes_
             if (now < DateNaissance.AddYears(age)) age--;
             return age.ToString();
         }
+
+        public void creerCompte()
+        {
+            Compte monCompte = new Compte();
+        }
+
+
 
         public override string ToString() => "Nom: " + Nom + " - Prénom: " + Prenom + " - Date naissance: " + DateNaissance + " - Age: " + Age() + " - Email: " + Email + " - Tel: " + Tel;
 

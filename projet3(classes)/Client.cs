@@ -8,20 +8,31 @@ namespace projet3_classes_
 {
     class Client // propriétes simplifiées
     {
-        public string Nom { get; init; }
-        public string Prenom { get; init; }
-        public string Email { get; init; }
-        public string Tel { get; init; }
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
+        public DateTime DateNaissance;
+        public string Email { get; set; }
+        public string Tel { get; set; }
 
-        public Client (string nom, string prenom, string email, string tel)
+        public Client(string nom = "", string prenom = "", DateTime dateNaissance = new DateTime() , string email = "", string tel = "")
         {
             Nom = nom;
             Prenom = prenom;
+            DateNaissance = dateNaissance;
             Email = email;
             Tel = tel;
+            // possible: (Nom, Prenom, Email, Tel) = (nom, prenom, email, tel);
         }
 
-        public override string ToString() => "Nom: " + Nom + " - Prénom: " + Prenom + " - Email: " + Email + " - Tel: " + Tel;
+        private string Age()
+        {
+            DateTime now = DateTime.Today;
+            int age = now.Year - DateNaissance.Year;
+            if (now < DateNaissance.AddYears(age)) age--;
+            return age.ToString();
+        }
+
+        public override string ToString() => "Nom: " + Nom + " - Prénom: " + Prenom + " - Date naissance: " + DateNaissance + " - Age: " + Age() + " - Email: " + Email + " - Tel: " + Tel;
 
     }
 }

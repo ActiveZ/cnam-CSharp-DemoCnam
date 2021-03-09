@@ -20,7 +20,7 @@ namespace projet3_classes_
 
             // débit
             montant = 100;
-            Console.WriteLine(monCompte.Debiter(montant) ? "Votre compte a été débité de " + montant + " euros": "Le débit dépasse le solde du compte");
+            Console.WriteLine(monCompte.Debiter(montant) ? "Votre compte a été débité de " + montant + " euros" : "Le débit dépasse le solde du compte");
             Console.WriteLine(monCompte.ToString());
 
             // création compte 2
@@ -28,7 +28,7 @@ namespace projet3_classes_
             Console.WriteLine("monCompte2");
 
             // création  compte avec constructeur par défaut
-            Compte monCompte2 = new Compte("666","31/12/1999", 666666);
+            Compte monCompte2 = new Compte("666", "31/12/1999", 666666);
 
             Console.WriteLine(monCompte2.ToString());
 
@@ -54,13 +54,16 @@ namespace projet3_classes_
             Console.WriteLine("----------------------------------");
             Console.WriteLine(monCompte.ToString());
             montant = 10;
-            Console.WriteLine( monCompte.VirementDiffere("date", montant) ? "Débit différé de " + montant : "Le débit dépasse le solde du compte");
+            Console.WriteLine(monCompte.VirementDiffere("date", montant) ? "Débit différé de " + montant : "Le débit dépasse le solde du compte");
             Console.WriteLine(monCompte.ToString());
 
 
             Console.WriteLine("----------------------------------");
-            Client client1 = new Client("nom1", "prenom1", "email1", "tel1");
+            Client client1 = new Client("nom1", "prenom1",new DateTime(1/1/2000) ,"email1", "tel1");
             Console.WriteLine("Client 1: " + client1.ToString());
+            Client client2 = new Client() { Nom = "client2", Prenom = "prenom2" };
+            // Client c3 = new Client();
+            // Console.WriteLine("Client 2: " + client2);
         }
     }
 }

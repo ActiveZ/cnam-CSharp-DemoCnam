@@ -10,15 +10,30 @@ namespace projet3_classes_
     {
         // attributs
         private string _numero;
-        private string _dateCreation;
+        // private string _dateCreation;
+        private DateTime _dateCreation;
         private float _solde;
 
         // constructeur
-        public Compte(string numero = "123", string dateCreation = "1/1/2000", float solde = 100)
+        public Compte(string numero = "123", string dateCreation, float solde = 100)
+        {
+            _numero = numero;
+            _dateCreation = DateTime.Parse (dateCreation);
+            _solde = solde;
+        }
+
+        public Compte(string numero = "123", DateTime dateCreation, float solde = 100)
         {
             _numero = numero;
             _dateCreation = dateCreation;
             _solde = solde;
+        }
+
+        public Compte()
+        {
+            _numero = "000";
+            _dateCreation = DateTime.Today;
+            _solde = 0;
         }
 
         // getters - setters
@@ -54,7 +69,7 @@ namespace projet3_classes_
         public override string ToString() => $"Votre compte numéro " + _numero + " créé le " + _dateCreation + " est créditeur de " + _solde + " euros";
 
 
-        public void Deconstruct(out string numero, out string dateCreation, out float solde)
+        public void Deconstruct(out string numero, out DateTime dateCreation, out float solde)
         {
             numero = _numero;
             dateCreation = _dateCreation;

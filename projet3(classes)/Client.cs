@@ -8,11 +8,12 @@ namespace projet3_classes_
 {
     class Client // propriétes simplifiées
     {
-        private string Nom { get; set; }
-        private string Prenom { get; set; }
-        private DateTime DateNaissance;
-        private string Email { get; set; }
-        private string Tel { get; set; }
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
+
+        public DateTime DateNaissance;
+        public string Email { get; set; }
+        public string Tel { get; set; }
 
         public Client(){}
 
@@ -35,7 +36,7 @@ namespace projet3_classes_
         }
 
 
-        public override string ToString() => "Nom: " + Nom + " - Prénom: " + Prenom + " - Date naissance: " + DateNaissance + " - Age: " + Age() + " - Email: " + Email + " - Tel: " + Tel;
+        public override string ToString() => "Nom: " + Nom + " - Prénom: " + Prenom + " - Date naissance: " + DateNaissance + " - Age: " + Age() + " - Email: " + Email + " - Tel: " + Tel +"\n";
 
     }
 }

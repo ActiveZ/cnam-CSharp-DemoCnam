@@ -8,78 +8,126 @@ namespace projet3_classes_
 {
     class Compte
     {
-        // attributs
+        #region attributs ( private ) 
+
         private string _numero;
+        private double _solde;
         private DateTime _dateCreation;
-        private float _solde;
+
         private Client _titulaire;
 
-        // constructeur
-        public Compte(string numero = "123", string dateCreation = "0/1/2000", float solde = 100)
+        private Operation[] _historique = new Operation[10];
+        private int nbOp = 0;
+        #endregion
+
+        #region proprietes 
+
+        public string Numero
         {
-            _numero = numero;
-            _dateCreation = DateTime.Parse (dateCreation);
-            _solde = solde;
+            get => _numero;
         }
 
-        public Compte(string numero = "123", DateTime dateCreation = new DateTime(), float solde = 100, Client titulaire = new Client())
-        {
-            _numero = numero;
-            _dateCreation = dateCreation;
-            _solde = solde;
-            _titulaire = titulaire;
-        }
-
-        public Compte()
-        {
-            _numero = "000";
-            _dateCreation = DateTime.Today;
-            _solde = 0;
-        }
-
-        // getters - setters
-        public float Solde
+        public double Solde
         {
             get => _solde;
+            set => _solde = value;
         }
 
+        public DateTime DateCreation
+        {
+            get => _dateCreation;
+        }
+
+        public Client Titulaire
+        {
+            get => _titulaire;
+        }
+
+        #endregion
+
+        #region constructeurs 
+
+        public Compte(Client titulaire, string numero, double solde, string dateCreation)
+        {
+            _titulaire = titulaire;
+            _numero = numero;
+            _solde = solde;
+            _dateCreation = DateTime.Parse(dateCreation);
+        }
+
+        public Compte(Client titulaire, string numero, double solde, DateTime dateCreation)
+        {
+            _titulaire = titulaire;
+            _numero = numero;
+            _solde = solde;
+            _dateCreation = dateCreation;
+        }
+
+        public Compte(Client titulaire, string numero = "555")
+        {
+            _titulaire = titulaire;
+            _numero = numero;
+            _solde = 0;
+            _dateCreation = DateTime.Now;
+        }
+
+        public Compte() : this(new Client(), "indefini", 0, DateTime.Now) { }
+
+
+        #endregion
 
         // methodes
-        public bool Crediter(float montant)
+        public bool Crediter(double montant)
         {
             if (montant >= 0)
             {
                 _solde += montant;
+                AjouterOperation(Toperation.crédit, montant);
                 return true;
             }
             return false;
         }
 
 
-        public bool Debiter(float montant)
+        public bool Debiter(double montant)
         {
             if (montant < _solde)
             {
                 _solde -= montant;
+                AjouterOperation(Toperation.débit, montant);
                 return true;
             }
             return false;
         }
 
-        
-        public override string ToString() => $"Votre compte numéro " + _numero + " créé le " + _dateCreation + " est créditeur de " + _solde + " euros " + "titulaire: " + _titulaire;
+
+        protected void AjouterOperation(Toperation type, double montant)
+        {
+            Operation op;
+            op = new Operation(type, DateTime.Now, montant);
+            _historique[nbOp++] = op;
+        }
+
+        public string GetHistorique()
+        {
+            string txt = "";
+
+            for (int i = 0; i < _historique.Length; i++)
+            {
+                Console.WriteLine(_historique[i]);
+            }
+            return txt;
+        }
+
+        public override string ToString() => $"Votre compte numéro " + _numero + " créé le " + _dateCreation + " solde: " + _solde + " euros " + "titulaire: " + _titulaire + "\n";
 
 
-        public void Deconstruct(out string numero, out DateTime dateCreation, out float solde)
+        public void Deconstruct(out string numero, out DateTime dateCreation, out double solde)
         {
             numero = _numero;
             dateCreation = _dateCreation;
             solde = _solde;
         }
 
-        public void Titulaire()
-        {
-
-        }
     }
 }

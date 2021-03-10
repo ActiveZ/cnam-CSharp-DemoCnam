@@ -10,7 +10,7 @@ namespace projet3_classes_
     {
         #region attributs ( private ) 
 
-        private string _numero;
+        private string _numero = Convert.ToString(DateTime.Now.Ticks);
         private double _solde;
         private DateTime _dateCreation;
 
@@ -47,31 +47,28 @@ namespace projet3_classes_
 
         #region constructeurs 
 
-        public Compte(Client titulaire, string numero, double solde, string dateCreation)
+        public Compte(Client titulaire, double solde, string dateCreation)
         {
             _titulaire = titulaire;
-            _numero = numero;
             _solde = solde;
             _dateCreation = DateTime.Parse(dateCreation);
         }
 
-        public Compte(Client titulaire, string numero, double solde, DateTime dateCreation)
+        public Compte(Client titulaire, double solde, DateTime dateCreation)
         {
             _titulaire = titulaire;
-            _numero = numero;
             _solde = solde;
             _dateCreation = dateCreation;
         }
 
-        public Compte(Client titulaire, string numero = "555")
+        public Compte(Client titulaire)
         {
             _titulaire = titulaire;
-            _numero = numero;
             _solde = 0;
             _dateCreation = DateTime.Now;
         }
 
-        public Compte() : this(new Client(), "indefini", 0, DateTime.Now) { }
+        public Compte() : this(new Client(), 0, DateTime.Now) { }
 
 
         #endregion

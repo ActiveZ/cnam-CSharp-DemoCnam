@@ -9,8 +9,11 @@ namespace projet3_classes_
             Client c1 = new Client("nom1", "prenom1", new DateTime(1991, 06, 02), "nom1@gmail.com", "0202020202");
             Client c2 = new Client("nom2", "prenom2", new DateTime(1991, 06, 02), "nom2@gmail.com", "0202020202");
             Compte cpt1, cpt2;
-            cpt1 = new Compte(c1, "101", 500, "2021-03-01");
-            cpt2 = new Compte(c2, "102");
+            cpt1 = new Compte(c1, 500, "2021-03-01");
+            cpt2 = new Compte(c2);
+            Console.WriteLine("Compte 1: " + cpt1.ToString());
+            Console.WriteLine("Compte 2: " + cpt2.ToString());
+
             cpt1.Crediter(100000);
             cpt2.Crediter(300);
             if (cpt2.Debiter(500))
@@ -132,6 +135,16 @@ namespace projet3_classes_
             montant = 500;
             CompteEpargne ce = new CompteEpargne(client1, montant, 5);
             Console.WriteLine(ce.ToString());
+
+
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("Création banque");
+            Banque banque = new Banque();
+            banque.CreerCompteCourant(client1, 0);
+            banque.CreerCompteEpargne(client1, 500, 5);
+            banque.ToString();
+
+
         }
     }
 }
